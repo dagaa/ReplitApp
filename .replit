@@ -1,0 +1,47 @@
+language = "nodejs"
+entrypoint = "src/app.html" # Or the main entry file for your SvelteKit app
+
+# Specifies the command to run your project.
+# For SvelteKit, this is typically the development server command.
+run = "npm run dev"
+modules = ["nodejs-20"]
+
+# Configures the Replit packager.
+[packager]
+# Specifies which nix channel to use.
+channel = "stable-23_11"
+
+[packager.features]
+# Enables support for package-lock.json, if you're using it.
+packageLock = true
+# Enables Git integration within the Replit environment.
+gitIgnore = true
+
+# Defines scripts that can be run from the Replit shell or UI.
+[scripts]
+# Script to install dependencies.
+install = "npm install"
+# Script to build the project for production.
+build = "npm run build"
+# Script to start the development server (same as the main 'run' command).
+dev = "npm run dev"
+# Script to preview the production build.
+preview = "npm run preview"
+
+# Environment variables (if any) can be defined here.
+#[env]
+#  MY_VARIABLE = "my_value"
+
+# Tells Replit which files to show by default in the file tree.
+# You might want to adjust this based on your project structure.
+[interpreter]
+[interpreter.command]
+args = [
+  "bash",
+  "-c",
+  "npm run dev -- --host 0.0.0.0", # Ensures the dev server is accessible
+]
+
+[[ports]]
+localPort = 5173
+externalPort = 80
